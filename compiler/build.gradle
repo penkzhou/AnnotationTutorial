@@ -28,18 +28,18 @@ android {
 
 ext {
     bintrayRepo = 'penkzhou'
-    bintrayName = 'AnnotationTutorial'
+    bintrayName = 'compiler'
 
     publishedGroupId = 'com.penkzhou.demo'
-    libraryName = 'annotation'
-    artifact = 'annotation'
+    libraryName = 'compiler'
+    artifact = 'compiler'
 
     libraryDescription = 'A demo about how to write Annotation process.'
 
     siteUrl = 'https://github.com/penkzhou/AnnotationTutorial'
     gitUrl = 'https://github.com/penkzhou/AnnotationTutorial.git'
 
-    libraryVersion = '0.0.4'
+    libraryVersion = '0.0.6'
 
     developerId = 'penkzhou'
     developerName = 'Peng Zhou'
@@ -55,6 +55,9 @@ dependencies {
 
     implementation 'com.android.support:appcompat-v7:28.0.0'
     testImplementation 'junit:junit:4.12'
+    implementation 'com.google.auto.service:auto-service:1.0-rc2'
+    annotationProcessor 'com.google.auto.service:auto-service:1.0-rc2'
+    implementation 'com.squareup:javapoet:1.9.0'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
 }
