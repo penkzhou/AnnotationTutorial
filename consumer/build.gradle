@@ -13,6 +13,7 @@ android {
         versionCode 1
         versionName "1.0"
 
+
     }
 
     buildTypes {
@@ -24,24 +25,19 @@ android {
 
 }
 
-
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
     implementation 'com.android.support:appcompat-v7:27.0.0'
-    implementation 'com.google.auto.service:auto-service:1.0-rc2'
-    annotationProcessor 'com.google.auto.service:auto-service:1.0-rc2'
-    implementation 'com.squareup:javapoet:1.9.0'
-    implementation 'com.penkzhou.project.android:annotation:0.1.5'
 }
 
 ext {
     bintrayRepo = 'android'
-    bintrayName = 'compiler'
+    bintrayName = 'consumer'
 
     publishedGroupId = 'com.penkzhou.project.android'
-    libraryName = 'compiler'
-    artifact = 'compiler'
+    libraryName = 'consumer'
+    artifact = 'consumer'
 
     libraryDescription = 'A demo about how to write Annotation process.'
 

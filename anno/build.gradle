@@ -1,54 +1,28 @@
-apply plugin: 'com.android.library'
+apply plugin: 'java-library'
 apply plugin: 'com.github.dcendents.android-maven'
 apply plugin: 'com.jfrog.bintray'
 
-android {
-    compileSdkVersion 27
-
-
-
-    defaultConfig {
-        minSdkVersion 15
-        targetSdkVersion 27
-        versionCode 1
-        versionName "1.0"
-
-    }
-
-    buildTypes {
-        release {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-        }
-    }
-
-}
-
-
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-
-    implementation 'com.android.support:appcompat-v7:27.0.0'
-    implementation 'com.google.auto.service:auto-service:1.0-rc2'
-    annotationProcessor 'com.google.auto.service:auto-service:1.0-rc2'
-    implementation 'com.squareup:javapoet:1.9.0'
-    implementation 'com.penkzhou.project.android:annotation:0.1.5'
 }
+
+sourceCompatibility = "7"
+targetCompatibility = "7"
 
 ext {
     bintrayRepo = 'android'
-    bintrayName = 'compiler'
+    bintrayName = 'annotation'
 
     publishedGroupId = 'com.penkzhou.project.android'
-    libraryName = 'compiler'
-    artifact = 'compiler'
+    libraryName = 'annotation'
+    artifact = 'annotation'
 
     libraryDescription = 'A demo about how to write Annotation process.'
 
     siteUrl = 'https://github.com/penkzhou/AnnotationTutorial'
     gitUrl = 'https://github.com/penkzhou/AnnotationTutorial.git'
 
-    libraryVersion = '0.1.0'
+    libraryVersion = '0.1.5'
 
     developerId = 'penkzhou'
     developerName = 'Peng Zhou'
@@ -98,21 +72,11 @@ install {
 
 task sourcesJar(type: Jar) {
     classifier = 'sources'
-    from android.sourceSets.main.java.srcDirs
+    from sourceSets.main.java.srcDirs
 }
 
-task javadoc(type: Javadoc) {
-    source = android.sourceSets.main.java.srcDirs
-    classpath += project.files(android.getBootClasspath().join(File.pathSeparator))
-}
-
-task javadocJar(type: Jar, dependsOn: javadoc) {
-    classifier = 'javadoc'
-    from javadoc.destinationDir
-}
 
 artifacts {
-    archives javadocJar
     archives sourcesJar
 }
 
@@ -140,3 +104,4 @@ bintray {
         }
     }
 }
+
