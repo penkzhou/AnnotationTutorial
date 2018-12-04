@@ -1,36 +1,16 @@
-apply plugin: 'com.android.library'
+apply plugin: 'java-library'
 apply plugin: 'com.github.dcendents.android-maven'
 apply plugin: 'com.jfrog.bintray'
 
-android {
-    compileSdkVersion 27
 
 
-
-    defaultConfig {
-        minSdkVersion 15
-        targetSdkVersion 27
-        versionCode 1
-        versionName "1.0"
-
-    }
-
-    buildTypes {
-        release {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-        }
-    }
-
-}
+sourceCompatibility = "7"
+targetCompatibility = "7"
 
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-
-    implementation 'com.android.support:appcompat-v7:27.0.0'
     implementation 'com.google.auto.service:auto-service:1.0-rc2'
-    annotationProcessor 'com.google.auto.service:auto-service:1.0-rc2'
     implementation 'com.squareup:javapoet:1.9.0'
     implementation 'com.penkzhou.project.android:annotation:0.1.5'
 }
@@ -48,7 +28,7 @@ ext {
     siteUrl = 'https://github.com/penkzhou/AnnotationTutorial'
     gitUrl = 'https://github.com/penkzhou/AnnotationTutorial.git'
 
-    libraryVersion = '0.1.0'
+    libraryVersion = '0.1.2'
 
     developerId = 'penkzhou'
     developerName = 'Peng Zhou'
@@ -66,7 +46,7 @@ version = libraryVersion
 install {
     repositories.mavenInstaller {
         pom.project {
-            packaging 'aar'
+            packaging 'jar'
             groupId publishedGroupId
             artifactId artifact
 
@@ -98,21 +78,11 @@ install {
 
 task sourcesJar(type: Jar) {
     classifier = 'sources'
-    from android.sourceSets.main.java.srcDirs
+    from sourceSets.main.java.srcDirs
 }
 
-task javadoc(type: Javadoc) {
-    source = android.sourceSets.main.java.srcDirs
-    classpath += project.files(android.getBootClasspath().join(File.pathSeparator))
-}
-
-task javadocJar(type: Jar, dependsOn: javadoc) {
-    classifier = 'javadoc'
-    from javadoc.destinationDir
-}
 
 artifacts {
-    archives javadocJar
     archives sourcesJar
 }
 

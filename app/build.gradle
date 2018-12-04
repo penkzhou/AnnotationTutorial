@@ -21,4 +21,6 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation 'com.android.support:appcompat-v7:27.0.0'
     implementation 'com.android.support.constraint:constraint-layout:1.1.3'
+    implementation 'com.penkzhou.project.android:annotation:0.1.5'
+    annotationProcessor 'com.penkzhou.project.android:compiler:0.1.1'
 }
